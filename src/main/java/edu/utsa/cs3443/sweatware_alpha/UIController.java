@@ -161,7 +161,7 @@ public class UIController {
             return;
         }
 
-        // Validate username (no commas or special characters that could break CSV)
+        // Validate username (no commas or line breaks)
         if (username.contains(",") || username.contains("\n") || username.contains("\r")) {
             successLabel.setText("Username cannot contain commas or line breaks.");
             successLabel.setStyle("-fx-text-fill: red;");
@@ -169,7 +169,7 @@ public class UIController {
             return;
         }
 
-        // Validate password (no commas that could break CSV)
+        // Validate password (no commas or line breaks)
         if (password.contains(",") || password.contains("\n") || password.contains("\r")) {
             successLabel.setText("Password cannot contain commas or line breaks.");
             successLabel.setStyle("-fx-text-fill: red;");
@@ -185,34 +185,38 @@ public class UIController {
             return;
         }
 
-        // Check for duplicate username and get next ID
-        File file = new File("data/users.csv");
+        File file = new File("/data/users.csv");
         boolean duplicateFound = false;
         int nextId = 1;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+        try {
+            if (!file.exists()) {
+                file.getParentFile().mkdirs();
+                file.createNewFile();
+            }
+
+            BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.trim().isEmpty()) continue;
                 String[] parts = line.split(",");
                 if (parts.length >= 3) {
-                    // Format: ID,Username,Password
                     String existingUsername = parts[1].trim();
                     if (username.equalsIgnoreCase(existingUsername)) {
                         duplicateFound = true;
                         break;
                     }
-                    // Track highest ID
                     try {
                         int id = Integer.parseInt(parts[0].trim());
                         if (id >= nextId) {
                             nextId = id + 1;
                         }
                     } catch (NumberFormatException e) {
-                        // Skip if ID is not a number
+                        System.err.println("Invalid ID format in CSV: " + parts[0]);
                     }
                 }
             }
+            reader.close();
         } catch (IOException e) {
             successLabel.setText("Error reading user data.");
             successLabel.setStyle("-fx-text-fill: red;");
@@ -227,21 +231,17 @@ public class UIController {
             return;
         }
 
-        // Write new user to CSV with auto-incremented ID
-        // Format: ID,Username,Password (3 fields only)
-        try {
-            // Use PrintWriter for easier line management
-            PrintWriter writer = new PrintWriter(new FileWriter(file, true));
-            writer.println(nextId + "," + username + "," + password);
-            writer.close();
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+            writer.write(nextId + "," + username + "," + password);
+            writer.newLine(); // ensures proper line break
         } catch (IOException e) {
+            e.printStackTrace(); // helpful for debugging
             successLabel.setText("Error saving account.");
             successLabel.setStyle("-fx-text-fill: red;");
             successLabel.setVisible(true);
             return;
         }
 
-        // Success message and redirect
         successLabel.setText("Account created successfully!");
         successLabel.setStyle("-fx-background-color: forestgreen;");
         successLabel.setTextFill(Color.FLORALWHITE);
@@ -374,12 +374,12 @@ public class UIController {
 
     @FXML
     private void handleViewAll(ActionEvent event) {
-        switchScene(event, "/fxml/WorkoutList.fxml");
+        switchScene(event, "WorkoutList.fxml");
     }
 
     @FXML
     private void handleProfile(ActionEvent event) {
-        switchScene(event, "/fxml/Profile.fxml");
+        switchScene(event, "profile-view.fxml");
     }
 
     @FXML
@@ -388,5 +388,8 @@ public class UIController {
             workoutTypeCombo.getItems().addAll("Push-ups", "Squats", "Plank", "Burpees", "Lunges", "Sit-ups");
         }
     }
-
+    @FXML
+    public void transitionToDashbord(ActionEvent event){
+        switchScene(event, "dashboard-view.fxml");
+    }
 }

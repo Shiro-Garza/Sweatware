@@ -1,5 +1,3 @@
-1,gym_user,abc123
-2,trainer,qwertyuiop1234
-3,trainee,passwordstrong098
-4,test,test
-5,user,pass
+username,password,email
+test,test,test@mail.com
+
