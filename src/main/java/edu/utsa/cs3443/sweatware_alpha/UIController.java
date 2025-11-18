@@ -13,8 +13,6 @@ import java.io.*;
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;
 
-import javax.swing.*;
-
 public class UIController {
 
     @FXML
@@ -146,9 +144,25 @@ public class UIController {
         String password = getPasswordText();
         String confirm = getConfirmPasswordText();
 
-        // Check for empty fields (email not needed for this CSV format)
+        // Check for empty fields
         if (username.isEmpty() || password.isEmpty() || confirm.isEmpty()) {
             successLabel.setText("All fields are required.");
+            successLabel.setStyle("-fx-text-fill: red;");
+            successLabel.setVisible(true);
+            return;
+        }
+
+        // Validate username (no commas or special characters that could break CSV)
+        if (username.contains(",") || username.contains("\n") || username.contains("\r")) {
+            successLabel.setText("Username cannot contain commas or line breaks.");
+            successLabel.setStyle("-fx-text-fill: red;");
+            successLabel.setVisible(true);
+            return;
+        }
+
+        // Validate password (no commas that could break CSV)
+        if (password.contains(",") || password.contains("\n") || password.contains("\r")) {
+            successLabel.setText("Password cannot contain commas or line breaks.");
             successLabel.setStyle("-fx-text-fill: red;");
             successLabel.setVisible(true);
             return;
@@ -162,13 +176,13 @@ public class UIController {
             return;
         }
 
-        // Check for duplicate username or email
+        // Check for duplicate username and get next ID
         File file = new File("data/users.csv");
         boolean duplicateFound = false;
+        int nextId = 1;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
-            int nextId = 1;
             while ((line = reader.readLine()) != null) {
                 if (line.trim().isEmpty()) continue;
                 String[] parts = line.split(",");
@@ -190,18 +204,6 @@ public class UIController {
                     }
                 }
             }
-
-            if (!duplicateFound) {
-                // Write new user to CSV with auto-incremented ID
-                try (FileWriter writer = new FileWriter(file, true)) {
-                    writer.write(nextId + "," + username + "," + password + "\n");
-                } catch (IOException e) {
-                    successLabel.setText("Error saving account.");
-                    successLabel.setStyle("-fx-text-fill: red;");
-                    successLabel.setVisible(true);
-                    return;
-                }
-            }
         } catch (IOException e) {
             successLabel.setText("Error reading user data.");
             successLabel.setStyle("-fx-text-fill: red;");
@@ -211,6 +213,20 @@ public class UIController {
 
         if (duplicateFound) {
             successLabel.setText("Username already exists.");
+            successLabel.setStyle("-fx-text-fill: red;");
+            successLabel.setVisible(true);
+            return;
+        }
+
+        // Write new user to CSV with auto-incremented ID
+        // Format: ID,Username,Password (3 fields only)
+        try {
+            // Use PrintWriter for easier line management
+            PrintWriter writer = new PrintWriter(new FileWriter(file, true));
+            writer.println(nextId + "," + username + "," + password);
+            writer.close();
+        } catch (IOException e) {
+            successLabel.setText("Error saving account.");
             successLabel.setStyle("-fx-text-fill: red;");
             successLabel.setVisible(true);
             return;
@@ -282,20 +298,22 @@ public class UIController {
 
     // Helper method to get password text from visible field
     private String getPasswordText() {
-        if (passwordField.isVisible()) {
+        if (passwordField != null && passwordField.isVisible()) {
             return passwordField.getText().trim();
-        } else {
+        } else if (textField != null) {
             return textField.getText().trim();
         }
+        return "";
     }
 
     // Helper method to get confirm password text from visible field
     private String getConfirmPasswordText() {
-        if (confirmPasswordField.isVisible()) {
+        if (confirmPasswordField != null && confirmPasswordField.isVisible()) {
             return confirmPasswordField.getText().trim();
-        } else {
+        } else if (confirmTextField != null) {
             return confirmTextField.getText().trim();
         }
+        return "";
     }
 
     // Helper method to show error messages
