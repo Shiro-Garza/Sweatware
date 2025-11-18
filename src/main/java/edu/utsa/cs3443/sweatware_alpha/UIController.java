@@ -37,6 +37,15 @@ public class UIController {
     private Button backToLoginButton;
     @FXML
     private Label errorLabel;
+    @FXML
+    private ComboBox<String> workoutTypeCombo;
+    @FXML
+    private TextField repsField;
+    @FXML
+    private TextField setsField;
+    @FXML
+    private Button confrimAddButton;
+
 
     @FXML
     private void togglePasswordVisibility() {
@@ -280,6 +289,7 @@ public class UIController {
         stage.show();
     }
 
+    @FXML
     private void transitionToLogin(ActionEvent event) {
         PauseTransition delay = new PauseTransition(Duration.seconds(2));
         delay.setOnFinished(e -> {
@@ -330,4 +340,53 @@ public class UIController {
             System.err.println(message);
         }
     }
+
+    private void switchScene(ActionEvent event, String fxmlFile) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
+    private void handleConfirmAddWorkout(ActionEvent event) {
+        String type = workoutTypeCombo.getValue();
+        String reps = repsField.getText();
+        String sets = setsField.getText();
+
+        if (type == null || reps.isEmpty() || sets.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please fill in all fields.");
+            alert.show();
+            return;
+        }
+
+        System.out.println("Workout added: " + type + " - " + reps + " reps x " + sets + " sets");
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+
+    @FXML
+    private void handleViewAll(ActionEvent event) {
+        switchScene(event, "/fxml/WorkoutList.fxml");
+    }
+
+    @FXML
+    private void handleProfile(ActionEvent event) {
+        switchScene(event, "/fxml/Profile.fxml");
+    }
+
+    @FXML
+    public void initialize() {
+        if (workoutTypeCombo != null) {
+            workoutTypeCombo.getItems().addAll("Push-ups", "Squats", "Plank", "Burpees", "Lunges", "Sit-ups");
+        }
+    }
+
 }

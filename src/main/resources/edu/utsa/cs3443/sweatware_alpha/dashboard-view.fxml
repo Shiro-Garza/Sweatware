@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="956.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="956.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.sweatware_alpha.UIController">
     <children>
         <ImageView fitHeight="956.0" fitWidth="440.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -31,13 +31,13 @@
         <ListView layoutX="40.0" layoutY="170.0" prefHeight="300.0" prefWidth="360.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
 
         <!-- Buttons Section -->
-        <Button layoutX="40.0" layoutY="490.0" mnemonicParsing="false" prefWidth="160.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" text="Add Workout">
+        <Button layoutX="40.0" layoutY="490.0" mnemonicParsing="false" prefWidth="160.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" text="Add Workout" onAction="#handleConfirmAddWorkout">
             <font>
                 <Font size="14.0" />
             </font>
         </Button>
 
-        <Button layoutX="240.0" layoutY="490.0" mnemonicParsing="false" prefWidth="160.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" text="View All">
+        <Button layoutX="240.0" layoutY="490.0" mnemonicParsing="false" prefWidth="160.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" text="View All" onAction="#handleViewAll">
             <font>
                 <Font size="14.0" />
             </font>
@@ -59,13 +59,13 @@
         </VBox>
 
         <!-- Bottom Navigation -->
-        <Button layoutX="31.0" layoutY="778.0" mnemonicParsing="false" prefWidth="160.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" text="Profile">
+        <Button layoutX="31.0" layoutY="778.0" mnemonicParsing="false" prefWidth="160.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" text="Profile" onAction="#handleProfile">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
 
-        <Button layoutX="240.0" layoutY="778.0" mnemonicParsing="false" prefWidth="160.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" text="Logout">
+        <Button layoutX="240.0" layoutY="778.0" mnemonicParsing="false" prefWidth="160.0" onAction="#transitionToLogin" style="-fx-background-radius: 15; -fx-border-radius: 15;" text="Logout">
             <font>
                 <Font size="18.0" />
             </font>
