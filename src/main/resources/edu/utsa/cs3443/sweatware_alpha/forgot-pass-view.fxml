@@ -25,5 +25,6 @@
          </font>
       </Label>
       <Button fx:id="backToLoginButton" layoutX="155.0" layoutY="500.0" mnemonicParsing="false" onAction="#handleBackToLogin" text="Back to Login" visible="false" style="-fx-background-radius: 5; -fx-border-radius: 5;" />
+       <Button layoutX="202.0" layoutY="889.0" mnemonicParsing="false" text="Back" onAction="#transitionToLogin" />
    </children>
 </AnchorPane>

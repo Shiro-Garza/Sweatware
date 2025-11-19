@@ -10,42 +10,54 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;
 
 public class UIController {
 
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private TextField textField;
-    @FXML
-    private CheckBox showPasswordCheckBox;
-    @FXML
-    private PasswordField confirmPasswordField;
-    @FXML
-    private TextField confirmTextField;
-    @FXML
-    private CheckBox confirmPasswordToggle;
-    @FXML
-    private Label successLabel;
-    @FXML
-    private TextField emailField;
-    @FXML
-    private TextField usernameField;
-    @FXML
-    private Button backToLoginButton;
-    @FXML
-    private Label errorLabel;
-    @FXML
-    private ComboBox<String> workoutTypeCombo;
-    @FXML
-    private TextField repsField;
-    @FXML
-    private TextField setsField;
-    @FXML
-    private Button confrimAddButton;
+    // Login and registration fields
+    @FXML private PasswordField passwordField;
+    @FXML private TextField textField;
+    @FXML private CheckBox showPasswordCheckBox;
+    @FXML private PasswordField confirmPasswordField;
+    @FXML private TextField confirmTextField;
+    @FXML private CheckBox confirmPasswordToggle;
+    @FXML private Label successLabel;
+    @FXML private TextField emailField;
+    @FXML private TextField usernameField;
+    @FXML private Button backToLoginButton;
+    @FXML private Label errorLabel;
 
+    // Workout fields
+    @FXML private ComboBox<String> workoutTypeCombo;
+    @FXML private TextField repsField;
+    @FXML private TextField setsField;
+    @FXML private Button confrimAddButton;
+
+    // Profile fields
+    @FXML private TextField ageField;
+    @FXML private ComboBox<String> genderCombo;
+    @FXML private TextField weightField;
+    @FXML private TextField genderField;
+    @FXML private TextArea contactInfoArea;
+
+    // Static session data
+    private static String currentUsername;
+    private static String currentEmail;
+    private static String currentAge;
+    private static String currentGender;
+    private static String currentWeight;
+
+    public static void setCurrentUser(String username, String email, String age, String gender, String weight) {
+        currentUsername = username;
+        currentEmail = email;
+        currentAge = age;
+        currentGender = gender;
+        currentWeight = weight;
+    }
 
     @FXML
     private void togglePasswordVisibility() {
@@ -86,53 +98,43 @@ public class UIController {
         String username = usernameField.getText().trim();
         String password = getPasswordText();
 
-        // Check for empty fields
         if (username.isEmpty() || password.isEmpty()) {
             showError("Username and password are required.");
             return;
         }
 
-        // Check credentials against CSV
-        File file = new File("data/users.csv");
-        if (!file.exists()) {
-            showError("User database not found.");
-            return;
-        }
-
+        List<String[]> users = readCSV("data/users.csv");
         boolean authenticated = false;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (line.trim().isEmpty()) continue;
-                String[] parts = line.split(",");
-                if (parts.length >= 3) {
-                    // Format: ID,Username,Password
-                    String storedUsername = parts[1].trim();
-                    String storedPassword = parts[2].trim();
+        for (String[] user : users) {
+            if (user.length >= 2) {
+                String storedUsername = user[0].trim();
+                String storedPassword = user[1].trim();
 
-                    if (username.equals(storedUsername) && password.equals(storedPassword)) {
-                        authenticated = true;
-                        break;
-                    }
+                System.out.println("Checking user:");
+                System.out.println("Entered username: '" + username + "'");
+                System.out.println("Stored username: '" + storedUsername + "'");
+                System.out.println("Entered password: '" + password + "'");
+                System.out.println("Stored password: '" + storedPassword + "'");
+
+                if (username.equals(storedUsername) && password.equals(storedPassword)) {
+                    String storedEmail = user.length >= 3 ? user[2].trim() : "";
+                    String storedAge = user.length >= 4 ? user[3].trim() : "";
+                    String storedGender = user.length >= 5 ? user[4].trim() : "";
+                    String storedWeight = user.length >= 6 ? user[5].trim() : "";
+
+                    setCurrentUser(storedUsername, storedEmail, storedAge, storedGender, storedWeight);
+                    authenticated = true;
+                    break;
                 }
             }
-        } catch (IOException e) {
-            showError("Error reading user data.");
-            return;
         }
 
         if (authenticated) {
-            // Login successful - navigate to dashboard
-            try {
-                Parent root = FXMLLoader.load(getClass().getResource("dashboard-view.fxml"));
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                Scene scene = new Scene(root, 440, 956);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                showError("Dashboard view not found.");
-            }
+            Parent root = FXMLLoader.load(getClass().getResource("dashboard-view.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 440, 956));
+            stage.show();
         } else {
             showError("Invalid username or password.");
         }
@@ -142,8 +144,7 @@ public class UIController {
     private void handleCreateAccount(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("create-account-view.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 440, 956);
-        stage.setScene(scene);
+        stage.setScene(new Scene(root, 440, 956));
         stage.show();
     }
 
@@ -152,95 +153,30 @@ public class UIController {
         String username = usernameField.getText().trim();
         String password = getPasswordText();
         String confirm = getConfirmPasswordText();
+        String email = emailField.getText().trim();
+        String age = ageField != null ? ageField.getText().trim() : "";
+        String gender = genderCombo != null ? genderCombo.getValue() : "";
+        String weight = weightField != null ? weightField.getText().trim() : "";
 
-        // Check for empty fields
-        if (username.isEmpty() || password.isEmpty() || confirm.isEmpty()) {
-            successLabel.setText("All fields are required.");
-            successLabel.setStyle("-fx-text-fill: red;");
-            successLabel.setVisible(true);
+        if (username.isEmpty() || password.isEmpty() || confirm.isEmpty() || email.isEmpty()) {
+            showError("All fields are required.");
             return;
         }
 
-        // Validate username (no commas or line breaks)
-        if (username.contains(",") || username.contains("\n") || username.contains("\r")) {
-            successLabel.setText("Username cannot contain commas or line breaks.");
-            successLabel.setStyle("-fx-text-fill: red;");
-            successLabel.setVisible(true);
-            return;
-        }
-
-        // Validate password (no commas or line breaks)
-        if (password.contains(",") || password.contains("\n") || password.contains("\r")) {
-            successLabel.setText("Password cannot contain commas or line breaks.");
-            successLabel.setStyle("-fx-text-fill: red;");
-            successLabel.setVisible(true);
-            return;
-        }
-
-        // Check if passwords match
         if (!password.equals(confirm)) {
-            successLabel.setText("Passwords do not match.");
-            successLabel.setStyle("-fx-text-fill: red;");
-            successLabel.setVisible(true);
+            showError("Passwords do not match.");
             return;
         }
 
-        File file = new File("/data/users.csv");
-        boolean duplicateFound = false;
-        int nextId = 1;
-
-        try {
-            if (!file.exists()) {
-                file.getParentFile().mkdirs();
-                file.createNewFile();
+        List<String[]> users = readCSV("data/users.csv");
+        for (String[] user : users) {
+            if (user.length >= 1 && username.equalsIgnoreCase(user[0].trim())) {
+                showError("Username already exists.");
+                return;
             }
-
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (line.trim().isEmpty()) continue;
-                String[] parts = line.split(",");
-                if (parts.length >= 3) {
-                    String existingUsername = parts[1].trim();
-                    if (username.equalsIgnoreCase(existingUsername)) {
-                        duplicateFound = true;
-                        break;
-                    }
-                    try {
-                        int id = Integer.parseInt(parts[0].trim());
-                        if (id >= nextId) {
-                            nextId = id + 1;
-                        }
-                    } catch (NumberFormatException e) {
-                        System.err.println("Invalid ID format in CSV: " + parts[0]);
-                    }
-                }
-            }
-            reader.close();
-        } catch (IOException e) {
-            successLabel.setText("Error reading user data.");
-            successLabel.setStyle("-fx-text-fill: red;");
-            successLabel.setVisible(true);
-            return;
         }
 
-        if (duplicateFound) {
-            successLabel.setText("Username already exists.");
-            successLabel.setStyle("-fx-text-fill: red;");
-            successLabel.setVisible(true);
-            return;
-        }
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
-            writer.write(nextId + "," + username + "," + password);
-            writer.newLine(); // ensures proper line break
-        } catch (IOException e) {
-            e.printStackTrace(); // helpful for debugging
-            successLabel.setText("Error saving account.");
-            successLabel.setStyle("-fx-text-fill: red;");
-            successLabel.setVisible(true);
-            return;
-        }
+        appendToCSV("data/users.csv", username, password, email, age, gender, weight);
 
         successLabel.setText("Account created successfully!");
         successLabel.setStyle("-fx-background-color: forestgreen;");
@@ -254,8 +190,7 @@ public class UIController {
     private void handleForgotPassword(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("forgot-pass-view.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 440, 956);
-        stage.setScene(scene);
+        stage.setScene(new Scene(root, 440, 956));
         stage.show();
     }
 
@@ -264,15 +199,11 @@ public class UIController {
         String username = usernameField.getText().trim();
         String email = emailField.getText().trim();
 
-        // Check for empty fields
         if (username.isEmpty() || email.isEmpty()) {
-            successLabel.setText("All fields are required.");
-            successLabel.setStyle("-fx-text-fill: red;");
-            successLabel.setVisible(true);
+            showError("All fields are required.");
             return;
         }
 
-        // Simulate sending email (in real app, verify user exists and send actual email)
         successLabel.setText("The email was sent!");
         successLabel.setStyle("-fx-background-color: forestgreen;");
         successLabel.setTextFill(Color.FLORALWHITE);
@@ -284,8 +215,7 @@ public class UIController {
     private void handleBackToLogin(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("login-view.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 440, 956);
-        stage.setScene(scene);
+        stage.setScene(new Scene(root, 440, 956));
         stage.show();
     }
 
@@ -296,8 +226,7 @@ public class UIController {
             try {
                 Parent loginRoot = FXMLLoader.load(getClass().getResource("login-view.fxml"));
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                Scene scene = new Scene(loginRoot, 440, 956);
-                stage.setScene(scene);
+                stage.setScene(new Scene(loginRoot, 440, 956));
                 stage.show();
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -305,53 +234,6 @@ public class UIController {
         });
         delay.play();
     }
-
-    // Helper method to get password text from visible field
-    private String getPasswordText() {
-        if (passwordField != null && passwordField.isVisible()) {
-            return passwordField.getText().trim();
-        } else if (textField != null) {
-            return textField.getText().trim();
-        }
-        return "";
-    }
-
-    // Helper method to get confirm password text from visible field
-    private String getConfirmPasswordText() {
-        if (confirmPasswordField != null && confirmPasswordField.isVisible()) {
-            return confirmPasswordField.getText().trim();
-        } else if (confirmTextField != null) {
-            return confirmTextField.getText().trim();
-        }
-        return "";
-    }
-
-    // Helper method to show error messages
-    private void showError(String message) {
-        // Try to use errorLabel first (for login screen), then successLabel (for other screens)
-        if (errorLabel != null) {
-            errorLabel.setText(message);
-            errorLabel.setVisible(true);
-        } else if (successLabel != null) {
-            successLabel.setText(message);
-            successLabel.setStyle("-fx-text-fill: red;");
-            successLabel.setVisible(true);
-        } else {
-            System.err.println(message);
-        }
-    }
-
-    private void switchScene(ActionEvent event, String fxmlFile) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     @FXML
     private void handleConfirmAddWorkout(ActionEvent event) {
@@ -371,7 +253,6 @@ public class UIController {
         stage.close();
     }
 
-
     @FXML
     private void handleViewAll(ActionEvent event) {
         switchScene(event, "WorkoutList.fxml");
@@ -384,12 +265,191 @@ public class UIController {
 
     @FXML
     public void initialize() {
+        // Populate workout type dropdown if present
         if (workoutTypeCombo != null) {
             workoutTypeCombo.getItems().addAll("Push-ups", "Squats", "Plank", "Burpees", "Lunges", "Sit-ups");
         }
+
+        // Populate gender combo box if present (used in registration)
+        if (genderCombo != null) {
+            genderCombo.getItems().addAll("Male", "Female", "Other");
+        }
+
+        // Refresh session data from CSV to ensure profile reflects latest saved values
+        List<String[]> users = readCSV("data/users.csv");
+        for (String[] user : users) {
+            if (user.length >= 6 && user[0].trim().equals(currentUsername)) {
+                currentEmail = user[2].trim();
+                currentAge = user[3].trim();
+                currentGender = user[4].trim();
+                currentWeight = user[5].trim();
+                break;
+            }
+        }
+
+        // Populate profile fields if present
+        if (usernameField != null) usernameField.setText(currentUsername);
+        if (emailField != null) emailField.setText(currentEmail); // used in registration/forgot password
+        if (ageField != null) ageField.setText(currentAge);
+        if (weightField != null) weightField.setText(currentWeight);
+        if (genderField != null) genderField.setText(currentGender);
+        if (contactInfoArea != null) contactInfoArea.setText(currentEmail);
     }
+
+    // Reusable CSV reader
+    public List<String[]> readCSV(String path) {
+        List<String[]> rows = new ArrayList<>();
+        File file = new File(path);
+
+        System.out.println("Attempting to read file: " + file.getAbsolutePath());
+
+        if (!file.exists()) {
+            System.err.println("File not found.");
+            return rows;
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                line = line.replace("\uFEFF", ""); // Remove BOM if present
+                System.out.println("Read line: " + line);
+                if (!line.trim().isEmpty()) {
+                    rows.add(line.split(","));
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading CSV: " + e.getMessage());
+        }
+
+        System.out.println("Total lines read: " + rows.size());
+        return rows;
+    }
+
+    // Reusable CSV appender
+    public void appendToCSV(String path, String... values) {
+        File file = new File(path);
+        try {
+            if (!file.exists()) {
+                file.getParentFile().mkdirs();
+                file.createNewFile();
+            }
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+                writer.write(String.join(",", values));
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Error writing to CSV: " + e.getMessage());
+        }
+    }
+
+    // Reusable CSV overwriter
+    public void writeCSV(String path, List<String[]> rows) {
+        File file = new File(path);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            for (String[] row : rows) {
+                writer.write(String.join(",", row));
+                writer.newLine();
+            }
+            System.out.println("CSV successfully updated.");
+        } catch (IOException e) {
+            System.err.println("Error overwriting CSV: " + e.getMessage());
+        }
+    }
+
     @FXML
-    public void transitionToDashbord(ActionEvent event){
+    public void transitionToDashbord(ActionEvent event) {
         switchScene(event, "dashboard-view.fxml");
     }
+    private String getPasswordText() {
+        if (passwordField != null && passwordField.isVisible()) {
+            return passwordField.getText().trim();
+        } else if (textField != null && textField.isVisible()) {
+            return textField.getText().trim();
+        }
+        return "";
+    }
+    private void showError(String message) {
+        if (errorLabel != null) {
+            errorLabel.setText(message);
+            errorLabel.setVisible(true);
+        } else if (successLabel != null) {
+            successLabel.setText(message);
+            successLabel.setStyle("-fx-text-fill: red;");
+            successLabel.setVisible(true);
+        } else {
+            System.err.println(message);
+        }
+    }
+    private void switchScene(ActionEvent event, String fxmlFile) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private String getConfirmPasswordText() {
+        if (confirmPasswordField != null && confirmPasswordField.isVisible()) {
+            return confirmPasswordField.getText().trim();
+        } else if (confirmTextField != null && confirmTextField.isVisible()) {
+            return confirmTextField.getText().trim();
+        }
+        return "";
+    }
+
+    @FXML
+    private void handleSaveProfile(ActionEvent event) {
+        String updatedAge = ageField.getText().trim();
+        String updatedGender = genderField.getText().trim();
+        String updatedWeight = weightField.getText().trim();
+
+        List<String[]> users = readCSV("data/users.csv");
+        boolean updated = false;
+
+        for (int i = 0; i < users.size(); i++) {
+            String[] user = users.get(i);
+            if (user.length >= 2 && user[0].trim().equals(currentUsername)) {
+                System.out.println("Match found. Updating user: " + currentUsername);
+
+                // Ensure array has 6 fields
+                if (user.length < 6) {
+                    user = java.util.Arrays.copyOf(user, 6);
+                }
+
+                user[3] = updatedAge;
+                user[4] = updatedGender;
+                user[5] = updatedWeight;
+
+                users.set(i, user); // Replace in list
+                updated = true;
+                break;
+            }
+        }
+
+        if (updated) {
+            writeCSV("data/users.csv", users);
+            showConfirmation("Profile updated successfully!");
+
+            // Update session
+            currentAge = updatedAge;
+            currentGender = updatedGender;
+            currentWeight = updatedWeight;
+        } else {
+            showError("Could not find user to update.");
+        }
+    }
+    private void showConfirmation(String message) {
+        if (successLabel != null) {
+            successLabel.setText(message);
+            successLabel.setStyle("-fx-background-color: forestgreen;");
+            successLabel.setTextFill(Color.FLORALWHITE);
+            successLabel.setVisible(true);
+        } else {
+            System.out.println(message);
+        }
+    }
+
 }

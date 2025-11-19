@@ -1,3 +1,2 @@
-username,password,email
-test,test,test@mail.com
-
+username,password,email,age,gender,weight
+test,test,test@mail.com,21,Male,155

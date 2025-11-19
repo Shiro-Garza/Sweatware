@@ -25,21 +25,22 @@
         <VBox layoutX="25.0" layoutY="220.0" spacing="15">
             <children>
                 <Label text="Username:" />
-                <TextField fx:id="usernameField" prefHeight="25.0" prefWidth="395.0" promptText="Enter username" />
+                <TextField fx:id="usernameField" editable="false" prefHeight="25.0" prefWidth="395.0" promptText="Enter username" text="user" />
 
                 <Label text="Age:" />
-                <TextField fx:id="ageField" promptText="Enter age" />
+                <TextField fx:id="ageField" promptText="Enter age" text="12" />
 
                 <Label text="Gender:" />
-                <TextField fx:id="genderField" promptText="Enter gender" />
+                <TextField fx:id="genderField" promptText="Enter gender" text="Male" />
 
                 <Label text="Weight:" />
-                <TextField fx:id="weightField" promptText="Enter weight" />
+                <TextField fx:id="weightField" promptText="Enter weight" text="160" />
 
                 <Label style="-fx-font-weight: bold;" text="Contact Info:" />
-                <TextArea fx:id="contactInfoArea" prefHeight="69.0" prefRowCount="3" prefWidth="338.0" promptText="Enter contact details" wrapText="true" />
+                <TextArea fx:id="contactInfoArea" editable="false" prefHeight="69.0" prefRowCount="3" prefWidth="338.0" promptText="Enter contact details" text="mail@mail.com" wrapText="true" />
             </children>
         </VBox>
-      <Button layoutX="202.0" layoutY="889.0" mnemonicParsing="false" text="Back" onAction="#transitionToDashbord" />
+        <Button fx:id="saveProfileButton" layoutX="178.0" layoutY="624.0" onAction="#handleSaveProfile" text="Save Changes" />
+        <Button layoutX="202.0" layoutY="889.0" mnemonicParsing="false" onAction="#transitionToDashbord" text="Back" />
     </children>
 </AnchorPane>
