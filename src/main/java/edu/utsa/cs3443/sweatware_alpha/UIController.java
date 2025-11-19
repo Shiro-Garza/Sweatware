@@ -5,16 +5,23 @@ import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import java.io.*;
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;
+
+import javax.swing.*;
+
 
 public class UIController {
 
@@ -36,6 +43,13 @@ public class UIController {
     @FXML private TextField repsField;
     @FXML private TextField setsField;
     @FXML private Button confrimAddButton;
+    @FXML private VBox workoutListContainer;
+    @FXML private ListView<String> workoutListView;
+    @FXML private Label totalWorkoutsLabel;
+    @FXML private Label weeklyWorkoutsLabel;
+    @FXML private Label monthlyWorkoutsLabel;
+    @FXML private ListView<String> allWorkoutsListView;
+
 
     // Profile fields
     @FXML private TextField ageField;
@@ -234,7 +248,6 @@ public class UIController {
         });
         delay.play();
     }
-
     @FXML
     private void handleConfirmAddWorkout(ActionEvent event) {
         String type = workoutTypeCombo.getValue();
@@ -248,14 +261,11 @@ public class UIController {
         }
 
         System.out.println("Workout added: " + type + " - " + reps + " reps x " + sets + " sets");
+        appendWorkout(currentUsername, type, reps, sets);
 
+        // Close the popup
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
-    }
-
-    @FXML
-    private void handleViewAll(ActionEvent event) {
-        switchScene(event, "WorkoutList.fxml");
     }
 
     @FXML
@@ -269,6 +279,21 @@ public class UIController {
         if (workoutTypeCombo != null) {
             workoutTypeCombo.getItems().addAll("Push-ups", "Squats", "Plank", "Burpees", "Lunges", "Sit-ups");
         }
+        if (workoutListView != null) {
+            List<String[]> allWorkouts = readCSV("data/workouts.csv");
+
+            for (String[] row : allWorkouts) {
+                if (row.length >= 4 && row[0].equals(currentUsername)) {
+                    String type = row[1];
+                    String reps = row[2];
+                    String sets = row[3];
+                    String entry = type + ": " + reps + " reps × " + sets + " sets";
+                    workoutListView.getItems().add(entry);
+                }
+            }
+        }
+        loadUserWorkouts();
+        updateQuickStats();
 
         // Populate gender combo box if present (used in registration)
         if (genderCombo != null) {
@@ -449,6 +474,120 @@ public class UIController {
             successLabel.setVisible(true);
         } else {
             System.out.println(message);
+        }
+    }
+    @FXML
+    private void openWorkoutPopup(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("workout-popup.fxml"));
+            Parent popupRoot = loader.load();
+
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Add Workout");
+            popupStage.setScene(new Scene(popupRoot));
+            popupStage.initOwner(((Node) event.getSource()).getScene().getWindow());
+            popupStage.setResizable(false);
+            popupStage.showAndWait();
+            loadUserWorkouts();
+            updateQuickStats();
+
+            // ✅ Refresh workout list after popup closes
+            loadUserWorkouts();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    // Append to workouts.csv
+    public void appendWorkout(String username, String type, String reps, String sets) {
+        String date = LocalDate.now().toString(); // e.g. "2025-11-18"
+        appendToCSV("data/workouts.csv", username, type, reps, sets, date);
+    }
+    public void loadUserWorkouts() {
+        if (workoutListView != null) {
+            workoutListView.getItems().clear();
+
+            List<String[]> allWorkouts = readCSV("data/workouts.csv");
+            for (String[] row : allWorkouts) {
+                if (row.length >= 4 && row[0].equals(currentUsername)) {
+                    String type = row[1];
+                    String reps = row[2];
+                    String sets = row[3];
+                    String entry = type + ": " + reps + " reps × " + sets + " sets";
+                    workoutListView.getItems().add(entry);
+                }
+            }
+        }
+    }
+    public void updateQuickStats() {
+        if (totalWorkoutsLabel == null || weeklyWorkoutsLabel == null || monthlyWorkoutsLabel == null) return;
+
+        List<String[]> allWorkouts = readCSV("data/workouts.csv");
+        int total = 0, weekly = 0, monthly = 0;
+
+        LocalDate today = LocalDate.now();
+        LocalDate weekStart = today.minusDays(7);
+        YearMonth currentMonth = YearMonth.from(today);
+
+        for (String[] row : allWorkouts) {
+            if (row.length >= 5 && row[0].equals(currentUsername)) {
+                total++;
+
+                LocalDate workoutDate;
+                try {
+                    workoutDate = LocalDate.parse(row[4]);
+                } catch (DateTimeParseException e) {
+                    continue;
+                }
+
+                if (!workoutDate.isBefore(weekStart)) {
+                    weekly++;
+                }
+
+                if (YearMonth.from(workoutDate).equals(currentMonth)) {
+                    monthly++;
+                }
+            }
+        }
+
+        totalWorkoutsLabel.setText("Total Workouts: " + total);
+        weeklyWorkoutsLabel.setText("This Week: " + weekly);
+        monthlyWorkoutsLabel.setText("This Month: " + monthly);
+    }
+    public void loadAllWorkoutsForPopup() {
+        if (allWorkoutsListView != null) {
+            allWorkoutsListView.getItems().clear();
+            List<String[]> allWorkouts = readCSV("data/workouts.csv");
+
+            for (String[] row : allWorkouts) {
+                if (row.length >= 5 && row[0].equals(currentUsername)) {
+                    String type = row[1];
+                    String reps = row[2];
+                    String sets = row[3];
+                    String date = row[4];
+                    String entry = date + " — " + type + ": " + reps + " reps × " + sets + " sets";
+                    allWorkoutsListView.getItems().add(entry);
+                }
+            }
+        }
+    }
+    @FXML
+    private void handleViewAll(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("view-all-popup.fxml"));
+            Parent popupRoot = loader.load();
+
+            // Load workouts into the popup
+            UIController controller = loader.getController();
+            controller.loadAllWorkoutsForPopup();
+
+            Stage popupStage = new Stage();
+            popupStage.setTitle("All Workouts");
+            popupStage.setScene(new Scene(popupRoot));
+            popupStage.initOwner(((Node) event.getSource()).getScene().getWindow());
+            popupStage.setResizable(false);
+            popupStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
