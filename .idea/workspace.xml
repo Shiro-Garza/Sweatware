@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f0fb9687-a43b-4457-93f7-653c8f0d655c" name="Changes" comment="finished the project some what but lowkey a little cooked" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="AidensDev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Shiro-Garza&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Shiro-Garza/Sweatware.git&quot;,
+    &quot;accountId&quot;: &quot;f496972a-9d95-4d23-b712-f4143cd43b7c&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="35ekjlNb8OmhxNRHHL4UOmNN7j7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Launcher.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SweatwareApplication.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;KadePatch&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gkade\IdeaProjects\Sweatware\src\main\java\edu\utsa\cs3443\sweatware_alpha\data" />
+      <recent name="C:\Users\gkade\IdeaProjects\Sweatware\src\main\resources\edu\utsa\cs3443\sweatware_alpha" />
+    </key>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f0fb9687-a43b-4457-93f7-653c8f0d655c" name="Changes" comment="" />
+      <created>1763478061260</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1763478061260</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Added some more stuff">
+      <option name="closed" value="true" />
+      <created>1763488052077</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1763488052077</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added some more stuff">
+      <option name="closed" value="true" />
+      <created>1763488520954</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1763488520954</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Working on UI controller for the read write for the account creation.">
+      <option name="closed" value="true" />
+      <created>1763491343730</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1763491343730</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add so the user can add their weight age etc and it will write to the file so it will populate the profile screen even after the user logs back in">
+      <option name="closed" value="true" />
+      <created>1763523004387</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1763523004387</updated>
+    </task>
+    <task id="LOCAL-00005" summary="finished the project some what but lowkey a little cooked">
+      <option name="closed" value="true" />
+      <created>1763527793758</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1763527793758</updated>
+    </task>
+    <task id="LOCAL-00006" summary="finished the project some what but lowkey a little cooked">
+      <option name="closed" value="true" />
+      <created>1763596123206</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1763596123206</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added some more stuff" />
+    <MESSAGE value="Working on UI controller for the read write for the account creation." />
+    <MESSAGE value="add so the user can add their weight age etc and it will write to the file so it will populate the profile screen even after the user logs back in" />
+    <MESSAGE value="finished the project some what but lowkey a little cooked" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished the project some what but lowkey a little cooked" />
+  </component>
+</project>

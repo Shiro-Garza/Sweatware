@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="956.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.sweatware_alpha.UIController">
+    <children>
+        <ImageView fitHeight="956.0" fitWidth="440.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/swear_0003_Hue_Saturation-1.png" />
+            </image>
+        </ImageView>
+        <Button layoutX="170.0" layoutY="453.0" mnemonicParsing="false" onAction="#finalizeAccountCreation" style="-fx-background-radius: 5; -fx-border-radius: 5;" text="Create Account" />
+        <Text layoutX="3.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Account">
+            <font>
+                <Font size="64.0" />
+            </font>
+        </Text>
+        <StackPane layoutX="145.0" layoutY="380.0">
+            <PasswordField fx:id="passwordField" layoutX="145.0" layoutY="370.0" promptText="Password" style="-fx-background-radius: 5; -fx-border-radius: 5;" />
+            <TextField fx:id="textField" promptText="Password" visible="false" />
+        </StackPane>
+        <CheckBox fx:id="showPasswordCheckBox" layoutX="274.0" layoutY="384.0" onAction="#togglePasswordVisibility" />
+        <TextField fx:id="usernameField" layoutX="145.0" layoutY="350.0" promptText="Username" style="-fx-background-radius: 5; -fx-border-radius: 5;" />
+      <StackPane layoutX="146.0" layoutY="409.0">
+         <children>
+            <PasswordField fx:id="confirmPasswordField" layoutX="145.0" layoutY="390.0" promptText="Password" style="-fx-background-radius: 5; -fx-border-radius: 5;" />
+            <TextField fx:id="confirmTextField" promptText="Confirm Password" visible="false" />
+         </children>
+      </StackPane>
+      <CheckBox fx:id="confirmPasswordToggle" layoutX="275.0" layoutY="413.0" onAction="#toggleConfirmPasswordVisibility" />
+      <TextField fx:id="emailField" layoutX="145.0" layoutY="320.0" promptText="Email" style="-fx-background-radius: 5; -fx-border-radius: 5;" />
+        <Label fx:id="successLabel" layoutX="60.0" layoutY="500.0" text="Account created successfully!" visible="false">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+        <Button layoutX="202.0" layoutY="889.0" mnemonicParsing="false" text="Back" onAction="#transitionToLogin" />
+    </children>
+</AnchorPane>

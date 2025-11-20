@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="956.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.sweatware_alpha.UIController">
+    <children>
+        <!-- Background Image -->
+        <ImageView fitHeight="956.0" fitWidth="440.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/swear_0003_Hue_Saturation-1.png" />
+            </image>
+        </ImageView>
+
+        <!-- Title -->
+        <Text layoutX="130.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile">
+            <font>
+                <Font size="64.0" />
+            </font>
+        </Text>
+
+        <!-- Form Fields -->
+        <VBox layoutX="25.0" layoutY="220.0" spacing="15">
+            <children>
+                <Label text="Username:" />
+                <TextField fx:id="usernameField" editable="false" prefHeight="25.0" prefWidth="395.0" promptText="Enter username" text="user" />
+
+                <Label text="Age:" />
+                <TextField fx:id="ageField" promptText="Enter age" text="12" />
+
+                <Label text="Gender:" />
+                <TextField fx:id="genderField" promptText="Enter gender" text="Male" />
+
+                <Label text="Weight:" />
+                <TextField fx:id="weightField" promptText="Enter weight" text="160" />
+
+                <Label style="-fx-font-weight: bold;" text="Contact Info:" />
+                <TextArea fx:id="contactInfoArea" editable="false" prefHeight="69.0" prefRowCount="3" prefWidth="338.0" promptText="Enter contact details" text="mail@mail.com" wrapText="true" />
+            </children>
+        </VBox>
+        <Button fx:id="saveProfileButton" layoutX="178.0" layoutY="624.0" onAction="#handleSaveProfile" text="Save Changes" />
+        <Button layoutX="202.0" layoutY="889.0" mnemonicParsing="false" onAction="#transitionToDashbord" text="Back" />
+    </children>
+</AnchorPane>
