@@ -167,7 +167,7 @@ public class UIController {
 
     @FXML
     private void finalizeAccountCreation(ActionEvent event) {
-        // Null-safe reads to prevent NPEs when fields are not present/visible
+        // Null-safe reads to prevent Null pointer exceptions
         String username = (usernameField != null && usernameField.getText() != null)
                 ? usernameField.getText().trim() : "";
         String password = getPasswordText();
