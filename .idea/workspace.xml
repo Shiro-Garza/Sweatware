@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0fb9687-a43b-4457-93f7-653c8f0d655c" name="Changes" comment="finished the project some what but lowkey a little cooked" />
+    <list default="true" id="f0fb9687-a43b-4457-93f7-653c8f0d655c" name="Changes" comment="finished the project some what but lowkey a little cooked">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_18_2025_9_05_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_18_2025_9_05_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/users.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/workouts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/workouts.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/UIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/UIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/create-account-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/create-account-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/UIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/UIController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/create-account-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/create-account-view.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +45,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Shiro-Garza/Sweatware.git&quot;,
-    &quot;accountId&quot;: &quot;f496972a-9d95-4d23-b712-f4143cd43b7c&quot;
+    &quot;accountId&quot;: &quot;f1c48076-3894-4fab-bfec-0a46e9f6be86&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -53,8 +64,17 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;KadePatch&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -63,6 +83,14 @@
       <recent name="C:\Users\gkade\IdeaProjects\Sweatware\src\main\resources\edu\utsa\cs3443\sweatware_alpha" />
     </key>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26199.169" />
+        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-IU-252.26199.169" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="f0fb9687-a43b-4457-93f7-653c8f0d655c" name="Changes" comment="" />
@@ -70,6 +98,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1763478061260</updated>
+      <workItem from="1763605513659" duration="304000" />
+      <workItem from="1764383504730" duration="1940000" />
+      <workItem from="1764386488646" duration="1415000" />
     </task>
     <task id="LOCAL-00001" summary="Added some more stuff">
       <option name="closed" value="true" />
@@ -121,6 +152,9 @@
     </task>
     <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

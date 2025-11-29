@@ -1,3 +1,5 @@
 username,password,email,age,gender,weight
 test,test,test@mail.com,22,Male,155
-blue,842,det@mail.com,,,
+blue,842,det@mail.com
+a,a,a,,,
+aaa,a,aaa,,,

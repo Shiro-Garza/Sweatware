@@ -109,11 +109,14 @@ public class UIController {
 
     @FXML
     private void handleLogin(ActionEvent event) throws IOException {
-        String username = usernameField.getText().trim();
+
+        String username = (usernameField != null && usernameField.getText() != null)
+                ? usernameField.getText().trim() : "";
         String password = getPasswordText();
 
         if (username.isEmpty() || password.isEmpty()) {
-            showError("Username and password are required.");
+
+            showError("please enter a username and password.");
             return;
         }
 
@@ -164,16 +167,20 @@ public class UIController {
 
     @FXML
     private void finalizeAccountCreation(ActionEvent event) {
-        String username = usernameField.getText().trim();
+        // Null-safe reads to prevent NPEs when fields are not present/visible
+        String username = (usernameField != null && usernameField.getText() != null)
+                ? usernameField.getText().trim() : "";
         String password = getPasswordText();
         String confirm = getConfirmPasswordText();
-        String email = emailField.getText().trim();
+        String email = (emailField != null && emailField.getText() != null)
+                ? emailField.getText().trim() : "";
         String age = ageField != null ? ageField.getText().trim() : "";
         String gender = genderCombo != null ? genderCombo.getValue() : "";
         String weight = weightField != null ? weightField.getText().trim() : "";
 
         if (username.isEmpty() || password.isEmpty() || confirm.isEmpty() || email.isEmpty()) {
-            showError("All fields are required.");
+
+            showError("please enter a username and password.");
             return;
         }
 
@@ -210,11 +217,15 @@ public class UIController {
 
     @FXML
     private void handleSendPasswordReset(ActionEvent event) {
-        String username = usernameField.getText().trim();
-        String email = emailField.getText().trim();
+
+        String username = (usernameField != null && usernameField.getText() != null)
+                ? usernameField.getText().trim() : "";
+        String email = (emailField != null && emailField.getText() != null)
+                ? emailField.getText().trim() : "";
 
         if (username.isEmpty() || email.isEmpty()) {
-            showError("All fields are required.");
+
+            showError("please enter a username and password.");
             return;
         }
 
@@ -222,7 +233,9 @@ public class UIController {
         successLabel.setStyle("-fx-background-color: forestgreen;");
         successLabel.setTextFill(Color.FLORALWHITE);
         successLabel.setVisible(true);
-        backToLoginButton.setVisible(true);
+        if (backToLoginButton != null) {
+            backToLoginButton.setVisible(true);
+        }
     }
 
     @FXML
@@ -295,12 +308,12 @@ public class UIController {
         loadUserWorkouts();
         updateQuickStats();
 
-        // Populate gender combo box if present (used in registration)
+        // Populate gender combo box if present
         if (genderCombo != null) {
             genderCombo.getItems().addAll("Male", "Female", "Other");
         }
 
-        // Refresh session data from CSV to ensure profile reflects latest saved values
+        // Refresh session data from CSV
         List<String[]> users = readCSV("data/users.csv");
         for (String[] user : users) {
             if (user.length >= 6 && user[0].trim().equals(currentUsername)) {
@@ -314,7 +327,7 @@ public class UIController {
 
         // Populate profile fields if present
         if (usernameField != null) usernameField.setText(currentUsername);
-        if (emailField != null) emailField.setText(currentEmail); // used in registration/forgot password
+        if (emailField != null) emailField.setText(currentEmail);
         if (ageField != null) ageField.setText(currentAge);
         if (weightField != null) weightField.setText(currentWeight);
         if (genderField != null) genderField.setText(currentGender);
@@ -336,7 +349,7 @@ public class UIController {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                line = line.replace("\uFEFF", ""); // Remove BOM if present
+                line = line.replace("\uFEFF", "");
                 System.out.println("Read line: " + line);
                 if (!line.trim().isEmpty()) {
                     rows.add(line.split(","));
@@ -395,16 +408,25 @@ public class UIController {
         return "";
     }
     private void showError(String message) {
+        // Always prefer dedicated error label when available
         if (errorLabel != null) {
             errorLabel.setText(message);
+            // Ensure styling: red background, white text, padding, rounded corners
+            errorLabel.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-padding: 5; -fx-background-radius: 5;");
             errorLabel.setVisible(true);
-        } else if (successLabel != null) {
-            successLabel.setText(message);
-            successLabel.setStyle("-fx-text-fill: red;");
-            successLabel.setVisible(true);
-        } else {
-            System.err.println(message);
+            return;
         }
+
+        // Fallback to successLabel if present (e.g., other screens)
+        if (successLabel != null) {
+            successLabel.setText(message);
+            successLabel.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-padding: 5; -fx-background-radius: 5;");
+            successLabel.setVisible(true);
+            return;
+        }
+
+        // Last resort: log to stderr
+        System.err.println(message);
     }
     private void switchScene(ActionEvent event, String fxmlFile) {
         try {
