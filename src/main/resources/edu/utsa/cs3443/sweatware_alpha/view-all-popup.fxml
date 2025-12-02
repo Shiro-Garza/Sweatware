@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="edu.utsa.cs3443.sweatware_alpha.UIController"
+            fx:controller="edu.utsa.cs3443.sweatware_alpha.controller.ViewAllWorkoutsController"
             prefWidth="400" prefHeight="600">
     <children>
         <Label layoutX="140" layoutY="20" text="All Workouts" style="-fx-font-size: 20px;" />

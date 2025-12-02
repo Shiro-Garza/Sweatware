@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="250" prefWidth="300" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.sweatware_alpha.UIController">
+<AnchorPane prefHeight="250" prefWidth="300" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.sweatware_alpha.controller.WorkoutPopupController">
     <children>
         <VBox layoutX="20" layoutY="20" spacing="10">
             <children>

@@ -6,35 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="f0fb9687-a43b-4457-93f7-653c8f0d655c" name="Changes" comment="finished the project some what but lowkey a little cooked">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/src/main/java/edu/utsa/cs3443/sweatware_alpha/Launcher.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/src/main/java/edu/utsa/cs3443/sweatware_alpha/SweatwareApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/src/main/java/edu/utsa/cs3443/sweatware_alpha/UIController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/src/main/java/module-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/src/main/resources/edu/utsa/cs3443/sweatware_alpha/create-account-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/src/main/resources/edu/utsa/cs3443/sweatware_alpha/forgot-pass-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/src/main/resources/edu/utsa/cs3443/sweatware_alpha/images/swear_0003_Hue_Saturation-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/src/main/resources/edu/utsa/cs3443/sweatware_alpha/login-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/target/classes/edu/utsa/cs3443/sweatware_alpha/Launcher.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/target/classes/edu/utsa/cs3443/sweatware_alpha/SweatwareApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/target/classes/edu/utsa/cs3443/sweatware_alpha/UIController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/target/classes/edu/utsa/cs3443/sweatware_alpha/create-account-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/target/classes/edu/utsa/cs3443/sweatware_alpha/forgot-pass-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/target/classes/edu/utsa/cs3443/sweatware_alpha/images/swear_0003_Hue_Saturation-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/target/classes/edu/utsa/cs3443/sweatware_alpha/login-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/target/classes/module-info.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sweatware_Alpha/userInfo.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/users.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/workouts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/workouts.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/UIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/UIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/UIController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/create-account-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/create-account-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/dashboard-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/forgot-pass-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/forgot-pass-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/profile-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/profile-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/view-all-popup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/view-all-popup.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/workout-popup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/workout-popup.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/UIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/UIController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/UIController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/create-account-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/create-account-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/dashboard-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/forgot-pass-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/forgot-pass-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/profile-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/profile-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/view-all-popup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/view-all-popup.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/workout-popup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/workout-popup.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,10 +33,17 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="AidensDev" />
@@ -86,7 +80,8 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true"
+    "kotlin-language-version-configured": "true",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
   <component name="RecentsManager">
