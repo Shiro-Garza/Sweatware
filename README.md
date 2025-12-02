@@ -1,6 +1,7 @@
 # SweatWare Application
 
-## Names of contributers: Kade Garza, Aiden Gravett
+## Names of contributers: 
+  Kade Garza, Aiden Gravett
 
 ## Discription: 
   This application allows users to track their workouts, giving them a data on frequency of workouts and how much they have grown
