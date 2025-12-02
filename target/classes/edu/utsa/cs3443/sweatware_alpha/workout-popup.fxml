@@ -3,12 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="250" prefWidth="300" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="edu.utsa.cs3443.sweatware_alpha.UIController">
+<AnchorPane prefHeight="250" prefWidth="300" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.sweatware_alpha.UIController">
     <children>
         <VBox layoutX="20" layoutY="20" spacing="10">
             <children>
                 <Label text="Workout Type:" />
-                <ComboBox fx:id="workoutTypeCombo" prefWidth="260" promptText="Select Workout" />
+                <TextField fx:id="workoutText" promptText="Enter workout" />
 
                 <Label text="Reps:" />
                 <TextField fx:id="repsField" promptText="Enter reps" />

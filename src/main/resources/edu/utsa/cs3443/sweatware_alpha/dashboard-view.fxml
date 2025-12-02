@@ -5,20 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="956.0" prefWidth="440.0"
-            xmlns="http://javafx.com/javafx/17.0.12"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="edu.utsa.cs3443.sweatware_alpha.UIController">
+<AnchorPane prefHeight="956.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.utsa.cs3443.sweatware_alpha.UIController">
 
     <children>
         <!-- Background Image -->
-        <ImageView fx:id="backgroundImage"
-                   fitHeight="956.0"
-                   fitWidth="440.0"
-                   layoutX="0.0"
-                   layoutY="0.0"
-                   preserveRatio="false"
-                   pickOnBounds="true">
+        <ImageView fx:id="backgroundImage" fitHeight="956.0" fitWidth="440.0" layoutX="0.0" layoutY="0.0" pickOnBounds="true" preserveRatio="false">
             <image>
                 <Image url="@images/swear_0003_Hue_Saturation-1.png" />
             </image>
@@ -39,21 +30,16 @@
         </Text>
 
         <!-- Workout List -->
-        <ListView fx:id="workoutListView" layoutX="40.0" layoutY="170.0" prefHeight="300.0" prefWidth="360.0"
-                  style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+        <ListView fx:id="workoutListView" layoutX="40.0" layoutY="170.0" prefHeight="300.0" prefWidth="360.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
 
         <!-- Buttons -->
-        <Button layoutX="40.0" layoutY="490.0" prefWidth="160.0"
-                style="-fx-background-radius: 10; -fx-border-radius: 10;"
-                text="Add Workout" onAction="#openWorkoutPopup">
+        <Button layoutX="40.0" layoutY="490.0" onAction="#openWorkoutPopup" prefWidth="160.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" text="Add Workout">
             <font>
                 <Font size="14.0" />
             </font>
         </Button>
 
-        <Button layoutX="240.0" layoutY="490.0" prefWidth="160.0"
-                style="-fx-background-radius: 10; -fx-border-radius: 10;"
-                text="View All" onAction="#handleViewAll">
+        <Button layoutX="240.0" layoutY="490.0" onAction="#handleViewAll" prefWidth="160.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" text="View All">
             <font>
                 <Font size="14.0" />
             </font>
@@ -66,8 +52,7 @@
             </font>
         </Text>
 
-        <VBox layoutX="40.0" layoutY="590.0" prefWidth="360.0" spacing="15.0"
-              style="-fx-background-color: rgba(255, 255, 255, 0.7); -fx-background-radius: 10; -fx-padding: 20;">
+        <VBox layoutX="40.0" layoutY="590.0" prefWidth="360.0" spacing="15.0" style="-fx-background-color: rgba(255, 255, 255, 0.7); -fx-background-radius: 10; -fx-padding: 20;">
             <children>
                 <Label fx:id="totalWorkoutsLabel" style="-fx-font-size: 16px;" text="Total Workouts: 0" />
                 <Label fx:id="weeklyWorkoutsLabel" style="-fx-font-size: 16px;" text="This Week: 0" />
@@ -76,17 +61,13 @@
         </VBox>
 
         <!-- Navigation -->
-        <Button layoutX="31.0" layoutY="778.0" prefWidth="160.0"
-                style="-fx-background-radius: 15; -fx-border-radius: 15;"
-                text="Profile" onAction="#handleProfile">
+        <Button layoutX="31.0" layoutY="778.0" onAction="#handleProfile" prefWidth="160.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" text="Profile">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
 
-        <Button layoutX="240.0" layoutY="778.0" prefWidth="160.0"
-                style="-fx-background-radius: 15; -fx-border-radius: 15;"
-                text="Logout" onAction="#transitionToLogin">
+        <Button layoutX="240.0" layoutY="778.0" onAction="#handleBackToLogin" prefWidth="160.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" text="Logout">
             <font>
                 <Font size="18.0" />
             </font>
