@@ -16,23 +16,46 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Controller for the Sweatware profile view.
+ * <p>
+ * Allows users to view and update their profile information
+ * (age, gender, weight, and contact details). Updates are persisted
+ * to the CSV file via {@link DataManager} and reflected in the
+ * current {@link User} session object.
+ * </p>
+ * <p>Provides navigation back to the dashboard after saving changes.</p>
+ * @author Aiden Garvett
+ * @version final
+ */
 public class ProfileController {
 
+    /** Text field displaying the username (read-only). */
     @FXML private TextField usernameField;
+
+    /** Text field for editing the user's age. */
     @FXML private TextField ageField;
+
+    /** Text field for editing the user's gender. */
     @FXML private TextField genderField;
+
+    /** Text field for editing the user's weight. */
     @FXML private TextField weightField;
+
+    /** Text area for displaying the user's contact information (email). */
     @FXML private TextArea contactInfoArea;
 
+    /** The currently logged-in user whose profile is being edited. */
     private User currentUser;
 
     /**
-     * Receives the User object from DashboardController
+     * Initializes the profile view with the current user's data.
+     * Called by the {@link DashboardController} when navigating to this view.
+     * @param user the logged-in user whose profile is being displayed
      */
     public void initData(User user) {
         this.currentUser = user;
 
-        // Populate the fields with the user's current data
         if (usernameField != null) usernameField.setText(currentUser.getUsername());
         if (ageField != null) ageField.setText(currentUser.getAge());
         if (genderField != null) genderField.setText(currentUser.getGender());
@@ -40,29 +63,32 @@ public class ProfileController {
         if (contactInfoArea != null) contactInfoArea.setText(currentUser.getEmail());
     }
 
+    /**
+     * Handles saving profile updates (age, gender, weight).
+     * <p>
+     * Reads all users from the CSV file, finds the current user row,
+     * updates the relevant fields, writes changes back to the CSV,
+     * and updates the session {@link User} object.
+     * </p>
+     * @param event the action event triggered by the "Save" button
+     */
     @FXML
     private void handleSaveProfile(ActionEvent event) {
         String updatedAge = ageField.getText().trim();
         String updatedGender = genderField.getText().trim();
         String updatedWeight = weightField.getText().trim();
 
-        // 1. Read all users
         List<String[]> users = DataManager.readCSV("data/users.csv");
         boolean updated = false;
 
-        // 2. Find and update the specific user row
         for (int i = 0; i < users.size(); i++) {
             String[] row = users.get(i);
-            // row[0] is username
             if (row.length >= 2 && row[0].trim().equals(currentUser.getUsername())) {
 
-                // Ensure array is large enough to hold all fields
                 if (row.length < 6) {
-                    // resize array if needed to [username, pass, email, age, gender, weight]
                     String[] newRow = new String[6];
                     System.arraycopy(row, 0, newRow, 0, row.length);
-                    // Fill nulls with empty strings to avoid null pointers
-                    for(int k=row.length; k<6; k++) newRow[k] = "";
+                    for (int k = row.length; k < 6; k++) newRow[k] = "";
                     row = newRow;
                 }
 
@@ -70,17 +96,15 @@ public class ProfileController {
                 row[4] = updatedGender;
                 row[5] = updatedWeight;
 
-                users.set(i, row); // Replace the row in the list
+                users.set(i, row);
                 updated = true;
                 break;
             }
         }
 
-        // 3. Write changes back to CSV and update the Session Object
         if (updated) {
             DataManager.writeCSV("data/users.csv", users);
 
-            // Update the local User object so the session stays in sync!
             currentUser.setAge(updatedAge);
             currentUser.setGender(updatedGender);
             currentUser.setWeight(updatedWeight);
@@ -91,13 +115,18 @@ public class ProfileController {
         }
     }
 
+    /**
+     * Navigates back to the dashboard view, passing the updated
+     * {@link User} object to keep the session in sync.
+     * @param event the action event triggered by the "Back" button
+     */
     @FXML
     private void transitionToDashbord(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/utsa/cs3443/sweatware_alpha/dashboard-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/edu/utsa/cs3443/sweatware_alpha/dashboard-view.fxml"));
             Parent root = loader.load();
 
-            // Pass the updated user object BACK to the dashboard
             DashboardController controller = loader.getController();
             controller.initData(currentUser);
 
@@ -109,6 +138,11 @@ public class ProfileController {
         }
     }
 
+    /**
+     * Displays an alert dialog with the given title and content.
+     * @param title   the title of the alert window
+     * @param content the message to display
+     */
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);

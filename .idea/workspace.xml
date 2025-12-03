@@ -5,24 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0fb9687-a43b-4457-93f7-653c8f0d655c" name="Changes" comment="finished the project some what but lowkey a little cooked">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/UIController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/create-account-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/create-account-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/dashboard-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/forgot-pass-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/forgot-pass-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/login-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/profile-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/profile-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/view-all-popup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/view-all-popup.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/workout-popup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/workout-popup.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/UIController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/create-account-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/create-account-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/dashboard-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/forgot-pass-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/forgot-pass-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/login-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/profile-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/profile-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/view-all-popup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/view-all-popup.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/workout-popup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/utsa/cs3443/sweatware_alpha/workout-popup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/workouts.csv.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/SweatwareApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/SweatwareApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/CreateAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/CreateAccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/ForgotPasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/ForgotPasswordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/ViewAllWorkoutsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/ViewAllWorkoutsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/WorkoutPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/WorkoutPopupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/services/DataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/services/DataManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,17 +29,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="PUSH_TAGS">
-      <GitPushTagMode>
-        <option name="argument" value="--tags" />
-        <option name="title" value="All" />
-      </GitPushTagMode>
-    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="AidensDev" />
@@ -71,19 +60,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Launcher.executor": "Run",
-    "Application.SweatwareApplication.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Launcher.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SweatwareApplication.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\gkade\IdeaProjects\Sweatware\src\main\java\edu\utsa\cs3443\sweatware_alpha\data" />

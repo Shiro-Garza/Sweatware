@@ -12,30 +12,61 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Controller for the "Create Account" view in Sweatware.
+ * <p>
+ * Handles user input validation, account creation, password visibility toggles,
+ * and navigation back to the login screen.
+ * </p>
+ *
+ * <p>Accounts are stored in a CSV file with the format:
+ * <code>username, password, email, age, gender, weight</code>.</p>
+ *
+ * @author Aiden Garvett
+ * @version final
+ */
 public class CreateAccountController {
 
+    /** Text field for entering a username. */
     @FXML private TextField usernameField;
+
+    /** Text field for entering an email address. */
     @FXML private TextField emailField;
 
-    // Password controls
+    // --- Password controls ---
+    /** Hidden password field. */
     @FXML private PasswordField passwordField;
-    @FXML private TextField textField; // Visible password
+
+    /** Visible password field (shown when toggle is active). */
+    @FXML private TextField textField;
+
+    /** Checkbox to toggle password visibility. */
     @FXML private CheckBox showPasswordCheckBox;
 
-    // Confirm Password controls
+    // --- Confirm password controls ---
+    /** Hidden confirm password field. */
     @FXML private PasswordField confirmPasswordField;
-    @FXML private TextField confirmTextField; // Visible confirm password
+
+    /** Visible confirm password field (shown when toggle is active). */
+    @FXML private TextField confirmTextField;
+
+    /** Checkbox to toggle confirm password visibility. */
     @FXML private CheckBox confirmPasswordToggle;
 
-    @FXML private Label successLabel; // We will use this for both errors (Red) and success (Green)
+    /** Label used to display success or error messages. */
+    @FXML private Label successLabel;
 
+    /**
+     * Validates input fields, checks for duplicate usernames,
+     * creates a new account, and transitions back to login.
+     *
+     * @param event the action event triggered by the "Create Account" button
+     */
     @FXML
     private void finalizeAccountCreation(ActionEvent event) {
         String username = usernameField.getText().trim();
@@ -43,7 +74,7 @@ public class CreateAccountController {
         String password = getPasswordText();
         String confirm = getConfirmPasswordText();
 
-        // 1. Basic Validation
+        // Validation checks
         if (username.isEmpty() || password.isEmpty() || confirm.isEmpty() || email.isEmpty()) {
             showMessage("All fields are required.", true);
             return;
@@ -54,7 +85,7 @@ public class CreateAccountController {
             return;
         }
 
-        // 2. Check if username already exists
+        // Check for duplicate username
         List<String[]> users = DataManager.readCSV("data/users.csv");
         for (String[] user : users) {
             if (user.length >= 1 && username.equalsIgnoreCase(user[0].trim())) {
@@ -63,16 +94,19 @@ public class CreateAccountController {
             }
         }
 
-        // 3. Create the account (Format: username, password, email, age, gender, weight)
-        // We initialize age, gender, weight as empty strings for now.
+        // Append new account to CSV
         DataManager.appendToCSV("data/users.csv", username, password, email, "", "", "");
-
         showMessage("Account created successfully!", false);
 
-        // 4. Automatically go back to login after 2 seconds
+        // Transition back to login after delay
         transitionToLoginWithDelay(event);
     }
 
+    /**
+     * Immediately transitions back to the login view.
+     *
+     * @param event the action event triggered by navigation
+     */
     @FXML
     private void transitionToLogin(ActionEvent event) {
         try {
@@ -85,6 +119,11 @@ public class CreateAccountController {
         }
     }
 
+    /**
+     * Transitions back to the login view after a 2-second delay.
+     *
+     * @param event the action event triggered by navigation
+     */
     private void transitionToLoginWithDelay(ActionEvent event) {
         PauseTransition delay = new PauseTransition(Duration.seconds(2));
         delay.setOnFinished(e -> transitionToLogin(event));
@@ -93,6 +132,7 @@ public class CreateAccountController {
 
     // --- Helper Methods for Password Toggles ---
 
+    /** Toggles visibility of the main password field. */
     @FXML
     private void togglePasswordVisibility() {
         if (showPasswordCheckBox.isSelected()) {
@@ -110,6 +150,7 @@ public class CreateAccountController {
         }
     }
 
+    /** Toggles visibility of the confirm password field. */
     @FXML
     private void toggleConfirmPasswordVisibility() {
         if (confirmPasswordToggle.isSelected()) {
@@ -127,14 +168,31 @@ public class CreateAccountController {
         }
     }
 
+    /**
+     * Retrieves the current password text, regardless of visibility toggle.
+     *
+     * @return the trimmed password string
+     */
     private String getPasswordText() {
         return passwordField.isVisible() ? passwordField.getText().trim() : textField.getText().trim();
     }
 
+    /**
+     * Retrieves the current confirm password text, regardless of visibility toggle.
+     *
+     * @return the trimmed confirm password string
+     */
     private String getConfirmPasswordText() {
         return confirmPasswordField.isVisible() ? confirmPasswordField.getText().trim() : confirmTextField.getText().trim();
     }
 
+    /**
+     * Displays a message in the success label, styled as either
+     * an error (red background) or success (green background).
+     *
+     * @param message the message to display
+     * @param isError true if the message is an error, false if success
+     */
     private void showMessage(String message, boolean isError) {
         successLabel.setText(message);
         successLabel.setVisible(true);

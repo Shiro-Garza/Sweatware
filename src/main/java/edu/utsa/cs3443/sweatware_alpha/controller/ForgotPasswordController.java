@@ -11,16 +11,45 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
+/**
+ * Controller for the "Forgot Password" view in Sweatware.
+ * <p>
+ * Provides functionality for users to request a password reset
+ * and navigate back to the login screen.
+ * </p>
+ *
+ * <p>Currently, the email sending logic is a placeholder and should
+ * be implemented with actual email service integration.</p>
+ *
+ * @author Aiden Garvett
+ * @version final
+ */
 public class ForgotPasswordController {
 
+    /** Text field for entering the user's email address. */
     @FXML private TextField emailField;
+
+    /** Text field for entering the user's username. */
     @FXML private TextField usernameField;
+
+    /** Label used to display success or error messages. */
     @FXML private Label successLabel;
+
+    /** Button to navigate back to the login view. */
     @FXML private Button backToLoginButton;
 
+    /**
+     * Handles the password reset request.
+     * <p>
+     * Validates that both username and email fields are filled.
+     * If validation passes, displays a success message and reveals
+     * the "Back to Login" button.
+     * </p>
+     *
+     * @param event the action event triggered by the "Send Reset" button
+     */
     @FXML
     private void handleSendPasswordReset(ActionEvent event) {
         String username = usernameField.getText().trim();
@@ -33,7 +62,7 @@ public class ForgotPasswordController {
             return;
         }
 
-        // Logic to send email would go here
+        // Placeholder for actual email sending logic
         successLabel.setText("The email was sent!");
         successLabel.setStyle("-fx-background-color: forestgreen; -fx-text-fill: white; -fx-padding: 5; -fx-background-radius: 5;");
         successLabel.setVisible(true);
@@ -43,6 +72,11 @@ public class ForgotPasswordController {
         }
     }
 
+    /**
+     * Navigates back to the login view.
+     *
+     * @param event the action event triggered by the "Back to Login" button
+     */
     @FXML
     private void handleBackToLogin(ActionEvent event) {
         try {

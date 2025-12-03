@@ -8,7 +8,24 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Main entry point for the SweatWare application
+ * <p>
+ *     This class initializes the JavaFx Runtime, loads the login view from FXML, and displays the primary stage.
+ * </p>
+ * @author Kade Garza and Aiden Gravett
+ * @version final
+ */
+
 public class SweatwareApplication extends Application {
+
+    /**
+     * Starts the JavaFX application by loading the login view and
+     * displaying it in the primary stage.
+     * @param stage the primary stage provided by the JavaFX runtime
+     * @throws IOException if the FXML file cannot be found or loaded
+     */
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SweatwareApplication.class.getResource("login-view.fxml"));
@@ -22,6 +39,11 @@ public class SweatwareApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * Launches the Sweatware application.
+     * @param args command-line arguments passed to the application
+     */
 
     public static void main(String[] args) {
         launch(args);
