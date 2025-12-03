@@ -8,15 +8,15 @@
         <VBox layoutX="20" layoutY="20" spacing="10">
             <children>
                 <Label text="Workout Type:" />
-                <TextField fx:id="workoutText" promptText="Enter workout" />
+                <TextField fx:id="workoutText" promptText="Enter workout" style="-fx-background-radius: 5; -fx-border-radius: 5;"/>
 
                 <Label text="Reps:" />
-                <TextField fx:id="repsField" promptText="Enter reps" />
+                <TextField fx:id="repsField" promptText="Enter reps" style="-fx-background-radius: 5; -fx-border-radius: 5;"/>
 
                 <Label text="Sets:" />
-                <TextField fx:id="setsField" promptText="Enter sets" />
+                <TextField fx:id="setsField" promptText="Enter sets" style="-fx-background-radius: 5; -fx-border-radius: 5;"/>
 
-                <Button fx:id="confirmAddButton" onAction="#handleConfirmAddWorkout" text="Add Workout" />
+                <Button fx:id="confirmAddButton" onAction="#handleConfirmAddWorkout" text="Add Workout" style="-fx-background-radius: 5; -fx-border-radius: 5;" />
             </children>
         </VBox>
     </children>

@@ -4,21 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0fb9687-a43b-4457-93f7-653c8f0d655c" name="Changes" comment="finished the project some what but lowkey a little cooked">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f0fb9687-a43b-4457-93f7-653c8f0d655c" name="Changes" comment="Final Version">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/workouts.csv.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/Launcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/SweatwareApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/SweatwareApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/CreateAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/CreateAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/ForgotPasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/ForgotPasswordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/ViewAllWorkoutsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/ViewAllWorkoutsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/WorkoutPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/controller/WorkoutPopupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/services/DataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/utsa/cs3443/sweatware_alpha/services/DataManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/forgot-pass-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/forgot-pass-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/profile-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/profile-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/workout-popup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/workout-popup.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +125,23 @@
       <option name="project" value="LOCAL" />
       <updated>1763596123206</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Final Version">
+      <option name="closed" value="true" />
+      <created>1764787048117</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1764787048117</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Final Version">
+      <option name="closed" value="true" />
+      <created>1764787059103</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1764787059103</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -153,6 +160,7 @@
     <MESSAGE value="Working on UI controller for the read write for the account creation." />
     <MESSAGE value="add so the user can add their weight age etc and it will write to the file so it will populate the profile screen even after the user logs back in" />
     <MESSAGE value="finished the project some what but lowkey a little cooked" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished the project some what but lowkey a little cooked" />
+    <MESSAGE value="Final Version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final Version" />
   </component>
 </project>
