@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f0fb9687-a43b-4457-93f7-653c8f0d655c" name="Changes" comment="Final Version">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/forgot-pass-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/forgot-pass-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/login-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/profile-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/profile-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/workout-popup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/utsa/cs3443/sweatware_alpha/workout-popup.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764787059103</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Final Version">
+      <option name="closed" value="true" />
+      <created>1764792496073</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1764792496073</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
