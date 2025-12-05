@@ -1,12 +1,12 @@
 # SweatWare Application
 
-## Names of contributers: 
+## Names of Contributers: 
 Kade Garza, Aiden Gravett
 
-## Discription: 
+## Description: 
   This application allows users to track their workouts, giving them a data on frequency of workouts and how much they have grown.   
   Users are able to create an account that allows to store data specifically to their account with data points like age, weight, gender and workouts.   
-  We implemented a forgot passwords field keeping in mind that people forget their passwords often.   
+  We implemented a forgot passwords feature keeping in mind that users often need account recovery options.   
 
 ## Features
 * **User Accounts:** Create personal accounts to securely store your data.
@@ -15,10 +15,10 @@ Kade Garza, Aiden Gravett
 * **Growth Tracking:** View data on how much you have grown over time.
 
   ## Startup Instructions:
-  Clone the repositiory
-  Run the application using the lancher or the sweatware_application class
-  Use the create account button to create an account
-  On profile you can enter the age weight fields to save that in their profile
+  Clone the repository.  
+  Run the application using the launcher (or the sweatware_application.java).  
+  Use the create account button to create an account.  
+  Navigate to the profile so you can enter the age weight fields to save that in your account.  
 
-## Know issues
-  The forgot password does not actually send the user an email
+## Know Issues
+  The Forgot Password feature simulates the process but does not currently send an actual email to the user.
